@@ -2,7 +2,7 @@
  
 This program calculates the odds of instances in a poker game. Inputs include player-held cards, community cards, and number of players. Outputs include odds of having the best hand and odds of winning the round. The purpose is to give the user an advantage by knowing their exact chance of winning. The user is able to specify situations and the program will calculate the percentage chance of any outcomes the user specifies.
 
-Example-
+Example -
 
 The user has two cards in their hand and it is before the flop. Let's say the user wants to know their chance of getting a three-of-a-kind on the flop. The user could specify the cards they can confirm and the cards they think their oponents may be holding, then the program would output a percentage chance of getting a three-of-a-kind with the user's hand.
 

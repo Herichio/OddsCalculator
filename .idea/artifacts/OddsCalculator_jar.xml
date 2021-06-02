@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OddsCalculator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/OddsCalculator_jar</output-path>
+    <root id="archive" name="OddsCalculator.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="OddsCalculator" />
+    </root>
+  </artifact>
+</component>

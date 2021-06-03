@@ -25,7 +25,17 @@ public class Deck {
         return cardCount;
     }
 
-    public void shuffle() {
+    public void removeTopCard(int amount) {
+        for (int i = 0; i < amount; i++) {
+            this.cards.remove(0);
+        }
+    }
+
+    public void shuffleDeck() {
         Collections.shuffle(this.cards);
+    }
+
+    public Card getTopCard() {
+        return cards.get(0);
     }
 }

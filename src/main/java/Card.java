@@ -1,13 +1,42 @@
 public class Card {
-    Suite suite;
-    Value value;
+    private Suite suite;
+    private Value value;
 
     public enum Suite{
-        DIAMONDS, CLUBS, HEARTS, SPADES
+        DIAMONDS("D"),
+        CLUBS("C"),
+        HEARTS("H"),
+        SPADES("S");
+
+        public final String label;
+
+        private Suite(String label) {
+            this.label = label;
+        }
     }
 
+
+
     public enum Value{
-        TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
+        TWO("2"),
+        THREE("3"),
+        FOUR("4"),
+        FIVE("5"),
+        SIX("6"),
+        SEVEN("7"),
+        EIGHT("8"),
+        NINE("9"),
+        TEN("10"),
+        JACK("J"),
+        QUEEN("Q"),
+        KING("K"),
+        ACE("A");
+
+        public final String label;
+
+        private Value(String label) {
+            this.label = label;
+        }
     }
 
     public Card(Suite initialSuite, Value initialValue) {
@@ -24,65 +53,6 @@ public class Card {
     }
 
     public String displayCard() {
-        String displaySuite = "";
-        String displayValue = "";
-        switch (suite) {
-            case DIAMONDS:
-                displaySuite = "D";
-                break;
-            case CLUBS:
-                displaySuite = "C";
-                break;
-            case HEARTS:
-                displaySuite = "H";
-                break;
-            case SPADES:
-                displaySuite = "S";
-                break;
-        }
-
-        switch (value) {
-            case TWO:
-                displayValue = "2";
-                break;
-            case THREE:
-                displayValue = "3";
-                break;
-            case FOUR:
-                displayValue = "4";
-                break;
-            case FIVE:
-                displayValue = "5";
-                break;
-            case SIX:
-                displayValue = "6";
-                break;
-            case SEVEN:
-                displayValue = "7";
-                break;
-            case EIGHT:
-                displayValue = "8";
-                break;
-            case NINE:
-                displayValue = "9";
-                break;
-            case TEN:
-                displayValue = "10";
-                break;
-            case JACK:
-                displayValue = "J";
-                break;
-            case QUEEN:
-                displayValue = "Q";
-                break;
-            case KING:
-                displayValue = "K";
-                break;
-            case ACE:
-                displayValue = "A";
-                break;
-        }
-
-        return displayValue + displaySuite;
+        return this.value.label + this.suite.label;
     }
 }

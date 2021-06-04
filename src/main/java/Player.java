@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 public class Player {
-    String name;
-    int cardLimit;
-    int cardCount;
-    ArrayList<Card> cards;
+    private String name;
+    private int cardLimit;
+    private int cardCount;
+    private ArrayList<Card> cards;
 
-    public Player(String initialName) {
+    public Player(String initialName) { //TODO try interface
         this.name = initialName;
         this.cardLimit = 2;
         this.cards = new ArrayList<Card>();

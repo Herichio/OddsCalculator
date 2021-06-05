@@ -5,17 +5,11 @@ public class Deck {
     private ArrayList<Card> cards;
     private int cardCount;
 
-    public Deck() { //TODO better method?
-        Card.Suite[] suite = {Card.Suite.DIAMONDS, Card.Suite.CLUBS, Card.Suite.HEARTS, Card.Suite.SPADES};
-        Card.Value[] value = {Card.Value.TWO, Card.Value.THREE, Card.Value.FOUR,
-                Card.Value.FIVE, Card.Value.SIX, Card.Value.SEVEN,
-                Card.Value.EIGHT, Card.Value.NINE, Card.Value.TEN,
-                Card.Value.JACK, Card.Value.QUEEN, Card.Value.KING,
-                Card.Value.ACE};
+    public Deck() {
         this.cards = new ArrayList<>();
-        for (int i = 0; i < Card.Suite.values().length; i++) {
-            for (int j = 0; j < Card.Value.values().length; j++) {
-                cards.add(new Card(suite[i], value[j]));
+        for (Card.Suite suite: Card.Suite.values()) {
+            for (Card.Value value: Card.Value.values()) {
+                this.cards.add(new Card(suite, value));
             }
         }
     }

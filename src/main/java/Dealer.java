@@ -13,8 +13,9 @@ public class Dealer {
         return communityCards.size();
     }
 
-    public void addCommunityCard() {
+    public Card addCommunityCard() {
         this.communityCards.add(this.globalDeck.getTopCard());
+        return globalDeck.getTopCard();
     }
 
     public Deck getGlobalDeck() {

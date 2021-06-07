@@ -1,3 +1,7 @@
+package com.oddscalculator.deck;
+
+import com.oddscalculator.card.Card;
+
 import java.util.ArrayList;
 import java.util.Collections;
 

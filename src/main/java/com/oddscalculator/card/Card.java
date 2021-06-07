@@ -1,3 +1,5 @@
+package com.oddscalculator.card;
+
 public class Card {
     private Suite suite;
     private Value value;

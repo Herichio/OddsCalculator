@@ -1,25 +1,18 @@
-import java.util.ArrayList;
+package com.oddscalculator.player;
 
-interface Player {
-    void setName(String newName);
-    void setCardLimit(int newLimit);
-    String getName();
-    int getCardLimit();
-    Card getCard(int position);
-    void addCard(Card newCard);
-}
+import com.oddscalculator.card.Card;
+
+import java.util.ArrayList;
 
 public class NormalPlayer implements Player {
     private String name;
     private int cardLimit;
-    private int cardCount;
     private ArrayList<Card> cards;
 
     public NormalPlayer(String initialName) {
         this.name = initialName;
         this.cardLimit = 2;
         this.cards = new ArrayList<Card>();
-        this.cardCount = this.cards.size();
     }
 
     public void setName(String newName) {
@@ -38,13 +31,12 @@ public class NormalPlayer implements Player {
         return cardLimit;
     }
 
-    public Card getCard(int position) {
+    public Card getCardInHand(int position) {
         return cards.get(position);
     }
 
     public int getCardCount() {
-        this.cardCount = this.cards.size();
-        return cardCount;
+        return cards.size();
     }
 
     public void addCard(Card newCard) {

@@ -8,6 +8,6 @@ The user has two cards in their hand and it is before the flop. Let's say the us
 
 Community cards - Cards that are shared between all players
 Flop - The first three cards displayed after the first round of bets
-Three-of-a-kind - A combination of poker cards that consists of three card with the same value
+Three-of-a-kind - A combination of poker cards that consists of three com.oddscalculator.card with the same value
 
 Test 3

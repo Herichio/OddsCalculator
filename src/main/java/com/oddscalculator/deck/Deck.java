@@ -23,8 +23,10 @@ public class Deck {
         return cardCount;
     }
 
-    public void removeTopCard() {
+    public Card removeTopCard() {
+        Card tempCard = cards.get(0);
         this.cards.remove(0);
+        return tempCard;
     }
 
     public void shuffleDeck() {

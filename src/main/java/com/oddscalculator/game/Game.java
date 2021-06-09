@@ -1,6 +1,5 @@
 package com.oddscalculator.game;
 
-import com.oddscalculator.card.Card;
 import com.oddscalculator.dealer.Dealer;
 import com.oddscalculator.deck.Deck;
 import com.oddscalculator.player.NormalPlayer;
@@ -9,28 +8,58 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    private final NormalPlayer mainPlayer;
-    private final Deck globalDeck;
-    private final Dealer dealer;
-    private final ArrayList<NormalPlayer> playerArrayList;
+    private NormalPlayer mainPlayer;
+    private Deck globalDeck;
+    private Dealer dealer;
+    private ArrayList<NormalPlayer> playerArrayList;
+    private boolean continuation;
 
-    public Game() {
-        this.mainPlayer = new NormalPlayer("Player 1");
+    public Game(String initialCommand) {
+        initializeGame(initialCommand);
+    }
+
+    public void initializeGame(String initialCommand) {
+        this.mainPlayer = new NormalPlayer("Main Player");
         this.globalDeck = new Deck();
         this.dealer = new Dealer(globalDeck);
         this.playerArrayList = new ArrayList<>();
         this.playerArrayList.add(mainPlayer);
         this.globalDeck.shuffleDeck();
-        promptPlayerName(mainPlayer);
+        this.continuation = true;
 
         Scanner input = new Scanner(System.in);
-        String commandString;
-        while (true) {
+        String commandString = initialCommand;
+        command(commandString);
+        while (this.continuation) {
             System.out.println("Enter 'Help' for a list of commands");
             displayState();
             commandString = input.nextLine();
             command(commandString);
         }
+    }
+
+    public void setGlobalDeck(Deck deck) {
+        this.globalDeck = deck;
+    }
+
+    public void setDealer(Dealer dealer) {
+        this.dealer = dealer;
+    }
+
+    public NormalPlayer getMainPlayer() {
+        return mainPlayer;
+    }
+
+    public Deck getGlobalDeck() {
+        return globalDeck;
+    }
+
+    public Dealer getDealer() {
+        return dealer;
+    }
+
+    public ArrayList<NormalPlayer> getPlayerArrayList() {
+        return playerArrayList;
     }
 
     public void promptPlayerName(NormalPlayer player) {
@@ -74,8 +103,8 @@ public class Game {
         }
     }
 
-    public void addPlayer(String name) {
-        this.playerArrayList.add(new NormalPlayer(name));
+    public void addPlayer(NormalPlayer player) {
+        this.playerArrayList.add(player);
     }
 
     public void removePlayer(NormalPlayer player) {
@@ -124,7 +153,8 @@ public class Game {
                 Scanner input = new Scanner(System.in);
                 System.out.println("Enter new Player name:");
                 String temp = input.nextLine();
-                addPlayer(temp);
+                NormalPlayer player = new NormalPlayer(temp);
+                addPlayer(player);
                 break;
             }
             case "Remove Player":
@@ -151,7 +181,7 @@ public class Game {
                 commandUsage();
                 break;
             case "Exit":
-                System.exit(0);
+                continuation = false;
             default:
                 System.out.println("Invalid Command");
                 break;
@@ -171,9 +201,5 @@ public class Game {
                 "\n     - Removes a player from the game" +
                 "\nExit" +
                 "\n     - Exits the game");
-    }
-
-    public ArrayList<NormalPlayer> getPlayerArrayList() {
-        return playerArrayList;
     }
 }

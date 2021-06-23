@@ -25,15 +25,15 @@ class ChanceTest {
         globalDeck.removeTopCard();
         communityCards.add(globalDeck.getTopCard());
         globalDeck.removeTopCard();
+        communityCards.add(globalDeck.getTopCard());
+        globalDeck.removeTopCard();
 
         player.addCard(globalDeck.getTopCard());
         globalDeck.removeTopCard();
         player.addCard(globalDeck.getTopCard());
         globalDeck.removeTopCard();
 
-        globalDeck.removeTopCard();
-        globalDeck.removeTopCard();
-        Chance playerChance = new Chance(2, globalDeck, 0, player);
+        Chance playerChance = new Chance(1, globalDeck, 0, player);
         percentChance = playerChance.chanceOf(ComboType.PAIR, communityCards);
 
         System.out.println(percentChance);

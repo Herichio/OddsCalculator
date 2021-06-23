@@ -31,7 +31,7 @@ public class Chance {
 
                 break;
             case PAIR:
-                result = pair(communityCards, numOfHiddenCards);
+                result = pair(visibleCards, numOfHiddenCards);
                 break;
             case TWOPAIR:
 
@@ -76,13 +76,14 @@ public class Chance {
         double totalOutcomes = 1;
         boolean hasPair = false;
         int matchCount = 0;
-        for (int j = 0; j < visibleCards.size(); j++) {
-            for (Card visibleCard : visibleCards) {
-                if (visibleCards.get(j).getValue() == visibleCard.getValue() && visibleCards.get(j) != visibleCard) {
+        for (int i = 0; i < visibleCards.size(); i++) {
+            for (int j = 1; j < visibleCards.size() - i; j++) {
+                if (visibleCards.get(i).getValue() == visibleCards.get(i + j).getValue()) {
                     matchCount++;
                 }
             }
         }
+        System.out.println(matchCount);
         if (matchCount == 1) {
             hasPair = true;
         } else if (matchCount > 1) {
@@ -90,11 +91,11 @@ public class Chance {
         }
         for (int i = 0; i < numOfHiddenCards; i++) {
             if (hasPair) {
-                pairInstances *= this.unknownCards--;
-                totalOutcomes *= visibleCards.size() * 3 - 4;
+                pairInstances *= this.unknownCards-- - (visibleCards.size() * 3 - 4);
+                totalOutcomes *= this.unknownCards-- + (visibleCards.size() * 3 - 4);
             } else {
                 pairInstances *= visibleCards.size() * 3;
-                totalOutcomes *= this.unknownCards-- + pairInstances;
+                totalOutcomes *= this.unknownCards--;
             }
         }
         return pairInstances / totalOutcomes * 100;

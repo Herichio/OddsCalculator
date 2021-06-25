@@ -75,6 +75,7 @@ public class Chance {
         double pairInstances = 1;
         double totalOutcomes = 1;
         boolean hasPair = false;
+
         int matchCount = 0;
         for (int i = 0; i < visibleCards.size(); i++) {
             for (int j = 1; j < visibleCards.size() - i; j++) {
@@ -83,20 +84,27 @@ public class Chance {
                 }
             }
         }
+
         System.out.println(matchCount);
         if (matchCount == 1) {
             hasPair = true;
         } else if (matchCount > 1) {
             return 0.0;
         }
+
+        double match = 0;
+        double noMatch = 0;
         for (int i = 0; i < numOfHiddenCards; i++) {
+            match = visibleCards.size() * 3;
+            noMatch = this.unknownCards - match;
             if (hasPair) {
-                pairInstances *= this.unknownCards-- - (visibleCards.size() * 3 - 4);
-                totalOutcomes *= this.unknownCards-- + (visibleCards.size() * 3 - 4);
+                pairInstances *= this.unknownCards - ((visibleCards.size() - 1) * 3 - 1);
+                totalOutcomes *= this.unknownCards;
             } else {
-                pairInstances *= visibleCards.size() * 3;
-                totalOutcomes *= this.unknownCards--;
+                pairInstances += match * numOfHiddenCards * noMatch;
+                totalOutcomes += match * numOfHiddenCards * noMatch + match * match + noMatch * noMatch;
             }
+            unknownCards--;
         }
         return pairInstances / totalOutcomes * 100;
     }
